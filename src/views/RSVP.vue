@@ -5,7 +5,7 @@
     <form
       target="hidden_iframe"
       method="POST"
-      action="https://docs.google.com/forms/d/e/1FAIpQLSfJL-KwZF1J_8BxZZ4rh9QtWrsLK8aRDXQTQz949p4b5XlpFA/formResponse"
+      :action="googleFormUrl"
       class="flex flex-col gap-8 bg-white p-8 rounded-2xl shadow-2xl"
       @submit.prevent="handleSubmit"
     >
@@ -98,7 +98,7 @@
           <option value="No">No</option>
         </select>
       </div>
-      
+
       <input type="hidden" name="entry.12317715" :value="combinedFamilyMembers" />
 
       <button
@@ -123,6 +123,7 @@ const familyCount = ref(0)
 const ada = ref('')
 const familyMembers = ref([])
 const combinedFamilyMembers = ref('')
+const googleFormUrl = import.meta.env.VITE_GOOGLE_FORM_ACTION
 
 watch(familyCount, (count) => {
   if (count > 0) {

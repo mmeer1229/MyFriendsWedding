@@ -7,7 +7,7 @@
     </p>
 
     <a
-      href="https://www.amazon.com/wedding/registry/9BCWURNWZJ0O"
+    :href="amazonRegistryUrl"
       target="_blank"
       class="inline-block bg-pink-500 text-white font-semibold px-8 py-3 rounded-lg hover:bg-pink-600 transition transform hover:-translate-y-1 hover:scale-105 mb-8"
     >
@@ -21,6 +21,7 @@
 </template>
 
 <script setup>
+const amazonRegistryUrl = import.meta.env.VITE_AMAZON_REGISTRY_URL
 </script>
 
 <style scoped>
