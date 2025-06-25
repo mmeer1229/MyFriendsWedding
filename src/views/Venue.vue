@@ -51,7 +51,7 @@
             v-model="passwordInput"
             type="password"
             autocomplete="off"
-            placeholder="Enter password to view voucher"
+            placeholder="Enter password to view"
             class="border border-gray-300 rounded-lg p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-pink-400 transition mb-4"
           />
           <button
