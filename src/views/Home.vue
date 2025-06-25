@@ -13,6 +13,8 @@
         </p>
 
         <h2 class="text-2xl font-serif text-pink-600 mb-2">Location</h2>
+        <p class="text-gray-700 text-lg leading-relaxed mb-4"><strong>Kiijami Outlook at the San Diego Safari Park</strong>
+        </p>
         <p class="text-gray-700 text-lg leading-relaxed mb-4">
           <strong>15500 San Pasqual Valley Rd, Escondido, CA, 92027, United States</strong>
         </p>
