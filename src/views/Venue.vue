@@ -28,21 +28,52 @@
         <br /><br />
         If you arrive after <strong>3:00 PM</strong>, your ticket will be available at a table set up at the entrance to the park.
         <br /><br />
-        Additionally, a tram will be available at <strong>3:00 PM</strong> to transfer you to the ceremony site.
-        Please arrive no later than <strong>3:45 PM</strong> to give yourself time to park and reach the ceremony location.
+        Additionally, a tram will be available behind <strong>PARK BASE</strong> (circle in green), at <strong>3:00 PM</strong> to transfer you to <strong>BALLOON SAFARI</strong> (circle in blue), which will be a shorter walk to the ceremony site at <strong>KIIJAMI OUTLOOK</strong>. 
+        Please arrive to the park no later than <strong>3:45 PM</strong> to give yourself time to park and reach the ceremony location.
+        <br /><br />
+        If not taking the shuttle, a walk path is shown from the park entrance to the ceremony location on the map above.
       </p>
+
     </section>
 
     <!-- Parking Info -->
     <section class="mt-12 text-left">
       <h2 class="text-2xl font-serif text-pink-600 mb-4">Parking Pass Information</h2>
       <p class="text-gray-700 text-lg leading-relaxed">
-        A <strong>QR code</strong> for your parking pass will be sent via email to the Head of Household and is also provided below:
+        A Parking Voucher will be sent via email to the Head of Household and is also provided below.
+        <br /><br />
+        Please print the voucher or present the digital copy to the parking booth attendant upon arrival at the Safari Park.
       </p>
-      <div
-        class="w-48 h-48 bg-gray-200 flex items-center justify-center mx-auto mt-4 rounded-lg border border-dashed border-gray-400"
-      >
-        <span class="text-gray-500">QR Code Placeholder</span>
+
+      <div class="mt-6 text-center">
+        <div v-if="!unlocked" class="flex flex-col items-center">
+          <input
+            v-model="passwordInput"
+            type="password"
+            autocomplete="off"
+            placeholder="Enter password to view voucher"
+            class="border border-gray-300 rounded-lg p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-pink-400 transition mb-4"
+          />
+          <button
+            @click="checkPassword"
+            class="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-2 rounded-lg transition"
+          >
+            Unlock
+          </button>
+          <p v-if="wrongPassword" class="text-red-500 mt-2">Incorrect password.</p>
+        </div>
+
+        <div v-else>
+          <a
+            v-if="unlocked"
+            :href="driveImageUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block bg-pink-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-pink-600 transition mt-4"
+          >
+            View Parking Voucher
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -53,6 +84,22 @@ import { ref } from 'vue'
 import VueEasyLightbox from 'vue-easy-lightbox'
 
 const showModal = ref(false)
+
+const driveImageUrl = import.meta.env.VITE_VOUCHER_URL
+const passwordInput = ref('')
+const unlocked = ref(false)
+const wrongPassword = ref(false)
+
+const correctPassword = import.meta.env.VITE_VOUCHER_PASSWORD
+
+const checkPassword = () => {
+  if (passwordInput.value === correctPassword) {
+    unlocked.value = true
+    wrongPassword.value = false
+  } else {
+    wrongPassword.value = true
+  }
+}
 </script>
 
 <style scoped>
